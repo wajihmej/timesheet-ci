@@ -9,23 +9,19 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.entities.User;
 import tn.esprit.spring.services.IUserService;
 import tn.esprit.spring.services.UserServiceImpl;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
 public class UserServiceImplTest {
@@ -40,7 +36,7 @@ public class UserServiceImplTest {
 		public void testRetrieveAllUsers() {
 			List<User> listUsers = us.retrieveAllUsers(); 
 			// if there are 7 users in DB : 
-			Assertions.assertEquals(4, listUsers.size());
+			Assertions.assertEquals(3, listUsers.size());
 		
 			
 		}
@@ -77,8 +73,8 @@ public class UserServiceImplTest {
 		@Order(5)
 		public void testDeleteUser() {
 		
-			us.deleteUser("11");
-			Assertions.assertNull(us.retrieveUser("11"));
+			us.deleteUser("18");
+			Assertions.assertNull(us.retrieveUser("18"));
 	
 		}
 		
