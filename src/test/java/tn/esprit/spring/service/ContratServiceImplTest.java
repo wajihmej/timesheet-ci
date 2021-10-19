@@ -17,26 +17,29 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.entities.User;
+import tn.esprit.spring.services.ContratServiceImpl;
+import tn.esprit.spring.services.IContratService;
 import tn.esprit.spring.services.IUserService;
 import tn.esprit.spring.services.UserServiceImpl;
 
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
-public class UserServiceImplTest {
-	private static final Logger l = LogManager.getLogger(UserServiceImpl.class);
+public class ContratServiceImplTest {
+	private static final Logger l = LogManager.getLogger(ContratServiceImpl.class);
 	
 
 		@Autowired
-		IUserService us; 
+		IContratService cs; 
 	
 		@Test
 		@Order(1)
-		public void testRetrieveAllUsers() {
-			List<User> listUsers = us.retrieveAllUsers(); 
+		public void testRetrieveAllContrats() {
+			List<Contrat> listContrats = cs.retrieveAllContrats(); 
 			// if there are 7 users in DB : 
-			Assertions.assertEquals(3, listUsers.size());
+			Assertions.assertEquals(4, listContrats.size());
 		
 			
 		}
@@ -44,12 +47,13 @@ public class UserServiceImplTest {
 		
 		@Test
 		@Order(2)
-		public void testAddUser() throws ParseException {
+		public void testAddContart() throws ParseException {
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			Date d = dateFormat.parse("2015-03-23");
-			User u = new User("Mayssa1", "Mayssa1", d, Role.INGENIEUR); 
-			User userAdded = us.addUser(u); 
-			Assertions.assertEquals(u.getLastName(), userAdded.getLastName());
+			Float flo = (float) 15.09;
+			Contrat c = new Contrat(d,"CVP", flo); 
+			Contrat contratAdded = cs.addContrat(c); 
+			Assertions.assertEquals(c.getTypeContrat(), contratAdded.getTypeContrat());
 		}
 	 
 		@Test
@@ -57,24 +61,24 @@ public class UserServiceImplTest {
 		public void testModifyUser() throws ParseException   {
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			Date d = dateFormat.parse("2015-03-23");
-			User u = new User(12L, "Mayssa122222222", "Mayssa", d, Role.INGENIEUR); 
-			User userUpdated  = us.updateUser(u); 
-			Assertions.assertEquals(u.getLastName(), userUpdated.getLastName());
+			Float flo = (float) 22.09;
+			Contrat c = new Contrat(1,d,"CVP", flo); 
+			Contrat contratUpdated  = cs.updateContrat(c); 
+			Assertions.assertEquals(c.getTypeContrat(), contratUpdated.getTypeContrat());
 		}
 	
 		@Test
 		@Order(4)
-		public void testRetrieveUser() {
-			User userRetrieved = us.retrieveUser("12"); 
-			Assertions.assertEquals(12L, userRetrieved.getId());
+		public void testRetrieveContrat() {
+			Contrat contratRetrieved = cs.retrieveContrat("3"); 
+			Assertions.assertEquals(3L, contratRetrieved.getReference());
 		}
 		
 		@Test
 		@Order(5)
-		public void testDeleteUser() {
-		
-			us.deleteUser("16");
-			Assertions.assertNull(us.retrieveUser("16"));
+		public void testDeleteContrat() {
+			cs.deleteContrat("1");
+			Assertions.assertNull(cs.retrieveContrat("1"));
 	
 		}
 		
