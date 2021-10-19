@@ -1,6 +1,7 @@
 package tn.esprit.spring.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,23 +19,20 @@ public class ContratServiceImpl implements IContratService {
 
 	private static final Logger l = LogManager.getLogger(ContratServiceImpl.class);
 
-
-
-	
 	
 	@Override
 	public List<Contrat> retrieveAllContrats() { 
 		List<Contrat> contrats = null; 
 		try {
 	
-			l.info("In retrieveAllUsers() : ");
+			l.info("In retrieveAllContrats() : ");
 			contrats = (List<Contrat>) contratRepository.findAll();  
 			for (Contrat contrat : contrats) {
 				l.debug("contrats +++ : " + contrat);
 			} 
-			l.info("Out of retrieveAllUsers() : ");
+			l.info("Out of retrieveAllContrats() : ");
 		}catch (Exception e) {
-			l.error("Error in retrieveAllUsers() : " + e);
+			l.error("Error in retrieveAllContrats() : " + e);
 		}
 
 		return contrats;
@@ -52,22 +50,22 @@ public class ContratServiceImpl implements IContratService {
 	}
 
 	@Override
-	public void deleteContrat(String id) {
-		contratRepository.deleteById(Long.parseLong(id));
+	public void deleteContrat(int id) {
+		contratRepository.deleteById(id);
 	}
 
 	@Override
-	public Contrat retrieveContrat(String id) {
-		Contrat c = null;
-		try{
-			c =  contratRepository.findById(Long.parseLong(id)).get(); 
-			l.info("Contrat returned : " + c);
-
-		}catch (Exception e) {
-			// TODO: handle exception
-			l.error("error in retrieveUser() : "+e);
+	public Contrat retrieveContrat(int id) {
+		l.info("Retreiving user object");
+		try {
+			Optional<Contrat> u = contratRepository.findById(id);
+			if (u.isPresent()) {
+				return u.get();
+			}
+		} catch (Exception e) {
+			l.error(e);
 		}
-		return c; 
+		return null;
 
 	}
 

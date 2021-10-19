@@ -62,7 +62,7 @@ public class ContratServiceImplTest {
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			Date d = dateFormat.parse("2015-03-23");
 			Float flo = (float) 22.09;
-			Contrat c = new Contrat(1,d,"CVP", flo); 
+			Contrat c = new Contrat(1,d,"CDI", flo); 
 			Contrat contratUpdated  = cs.updateContrat(c); 
 			Assertions.assertEquals(c.getTypeContrat(), contratUpdated.getTypeContrat());
 		}
@@ -70,16 +70,15 @@ public class ContratServiceImplTest {
 		@Test
 		@Order(4)
 		public void testRetrieveContrat() {
-			Contrat contratRetrieved = cs.retrieveContrat("3"); 
-			Assertions.assertEquals(3L, contratRetrieved.getReference());
+			Contrat contratRetrieved = cs.retrieveContrat(4); 
+			Assertions.assertNotNull(contratRetrieved);
 		}
 		
 		@Test
 		@Order(5)
 		public void testDeleteContrat() {
-			cs.deleteContrat("1");
-			Assertions.assertNull(cs.retrieveContrat("1"));
-	
+			cs.deleteContrat(10);
+			Assertions.assertNull(cs.retrieveContrat(10));
 		}
 		
 		// 5 tests unitaires  

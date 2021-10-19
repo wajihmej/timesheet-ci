@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import tn.esprit.spring.entities.Contrat;
 
 @Repository
-public interface ContratRepositor extends  CrudRepository<Contrat, Long> {
+public interface ContratRepositor extends  CrudRepository<Contrat, Integer> {
 
 
 }
