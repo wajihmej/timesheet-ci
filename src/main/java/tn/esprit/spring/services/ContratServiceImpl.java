@@ -56,7 +56,7 @@ public class ContratServiceImpl implements IContratService {
 
 	@Override
 	public Contrat retrieveContrat(int id) {
-		l.info("Retreiving user object");
+		l.info("Retreiving Contrat object");
 		try {
 			Optional<Contrat> u = contratRepository.findById(id);
 			if (u.isPresent()) {

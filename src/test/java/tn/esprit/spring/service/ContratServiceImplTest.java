@@ -39,7 +39,7 @@ public class ContratServiceImplTest {
 		public void testRetrieveAllContrats() {
 			List<Contrat> listContrats = cs.retrieveAllContrats(); 
 			// if there are 7 users in DB : 
-			Assertions.assertEquals(4, listContrats.size());
+			Assertions.assertEquals(3, listContrats.size());
 		
 			
 		}
@@ -62,7 +62,7 @@ public class ContratServiceImplTest {
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			Date d = dateFormat.parse("2015-03-23");
 			Float flo = (float) 22.09;
-			Contrat c = new Contrat(1,d,"CDI", flo); 
+			Contrat c = new Contrat(2,d,"CDI", flo); 
 			Contrat contratUpdated  = cs.updateContrat(c); 
 			Assertions.assertEquals(c.getTypeContrat(), contratUpdated.getTypeContrat());
 		}
@@ -70,15 +70,15 @@ public class ContratServiceImplTest {
 		@Test
 		@Order(4)
 		public void testRetrieveContrat() {
-			Contrat contratRetrieved = cs.retrieveContrat(4); 
+			Contrat contratRetrieved = cs.retrieveContrat(19); 
 			Assertions.assertNotNull(contratRetrieved);
 		}
 		
 		@Test
 		@Order(5)
 		public void testDeleteContrat() {
-			cs.deleteContrat(10);
-			Assertions.assertNull(cs.retrieveContrat(10));
+			cs.deleteContrat(20);
+			Assertions.assertNull(cs.retrieveContrat(20));
 		}
 		
 		// 5 tests unitaires  
