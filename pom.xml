@@ -8,9 +8,21 @@
 		<version>2.2.1.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+	<distributionManagement>
+		<snapshotRepository>
+			<id>maven-snapshots</id>
+			<url>http://localhost:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>maven-releases</id>
+			<url>http://localhost:8081/repository/maven-releases/</url>
+		</repository>
+	</distributionManagement>
 	<groupId>tn.esprit.spring</groupId>
 	<artifactId>timesheet-ci</artifactId>
-	<version>1.0</version>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	
 	<name>timesheet-ci</name>
 	<description>timesheet-ci</description>
 
