@@ -33,7 +33,7 @@ public class ContratServiceImplTest {
 
 		@Autowired
 		IContratService cs; 
-	/*
+	
 		@Test
 		@Order(1)
 		public void testRetrieveAllContrats() {
@@ -78,7 +78,7 @@ public class ContratServiceImplTest {
 			cs.deleteContrat(26);
 			Assertions.assertNull(cs.retrieveContrat(26));
 		}
-		*/
+		
 		
 		// 5 tests unitaires  
  
