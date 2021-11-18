@@ -24,7 +24,7 @@ services:
     #  - my-db:/var/lib/mysql
   applicationService:
     build: C:/Program Files (x86)/Jenkins/workspace/timesheet-ci
-    image: myapp
+    image: 19971106/devopsimage
     ports:
       - "8090:8090"
     restart: always
