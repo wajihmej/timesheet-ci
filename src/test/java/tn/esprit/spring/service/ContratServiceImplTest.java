@@ -39,12 +39,10 @@ public class ContratServiceImplTest {
 		public void testRetrieveAllContrats() {
 			List<Contrat> listContrats = cs.retrieveAllContrats(); 
 			// if there are 7 users in DB : 
-			Assertions.assertEquals(3, listContrats.size());
-		
-			
+			Assertions.assertEquals(3, listContrats.size());			
 		}
 		
-		/*
+		
 		@Test
 		@Order(2)
 		public void testAddContart() throws ParseException {
@@ -77,10 +75,10 @@ public class ContratServiceImplTest {
 		@Test
 		@Order(5)
 		public void testDeleteContrat() {
-			cs.deleteContrat(24);
-			Assertions.assertNull(cs.retrieveContrat(24));
+			cs.deleteContrat(25);
+			Assertions.assertNull(cs.retrieveContrat(25));
 		}
-		*/
+		
 		// 5 tests unitaires  
  
 }
