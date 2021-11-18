@@ -75,8 +75,8 @@ public class ContratServiceImplTest {
 		@Test
 		@Order(5)
 		public void testDeleteContrat() {
-			cs.deleteContrat(25);
-			Assertions.assertNull(cs.retrieveContrat(25));
+			cs.deleteContrat(26);
+			Assertions.assertNull(cs.retrieveContrat(26));
 		}
 		
 		// 5 tests unitaires  
